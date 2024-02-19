@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uhalisi Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        ul.navbar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        ul.navbar li {
+            float: left;
+        }
+
+        ul.navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        ul.navbar li a:hover {
+            background-color: #111;
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .create-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .create-button:hover {
+            background-color: #45a049;
+        }
+
+        .tabcontent {
+            margin-bottom: 50rem;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <h1>Uhalisi Dashboard</h1>
+        <ul class="navbar">
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#stats">Statistics</a></li>
+            <li><a href="#create">Create ➕</a></li>
+            <li style="float:right"><a href="index.html">Logout</a></li>
+        </ul>
+
+        <div id="home" class="tabcontent">
+            <h2>Home</h2>
+            <p>Welcome to the Dashboard! On this tool, you have the following options:</p>
+            <ul>
+                <li> <a href="#reports">View reports</a></li>
+                <li> <a href="#create">Create reports and surveys</a></li>
+                <li> <a href="#reports">Print reports</a></li>
+            </ul>
+        </div>
+
+        <div id="reports" class="tabcontent">
+            <h2>Reports</h2>
+            <td><a href="#stats">Create</a></td>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Report Name</th>
+                    <th>Modifier</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>2024-02-18</td>
+                    <td>TTEC Impact Hire Survey</td>
+                    <td>Evelien C.</td>
+                    <td><a href="#stats">Review</a></td>
+                    <td><button onclick="printDocument()">🖨️</button></td>
+                </tr>
+                <tr>
+                    <td>2024-02-18</td>
+                    <td>Customer Satisfaction - Client X</td>
+                    <td>Amahle J.</td>
+                    <td><a href="#stats">Review</a></td>
+                    <td><button onclick="printDocument()">🖨️</button></td>
+                </tr>
+                <tr>
+                    <td>2024-02-18</td>
+                    <td>Survey January - Client X</td>
+                    <td>Amahle J.</td>
+                    <td><a href="#stats">Review</a></td>
+                    <td><button onclick="printDocument()">🖨️</button></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="stats" class="tabcontent">
+            <h2>Statistics</h2>
+            <td><button onclick="printDocument()">Print 🖨️</button></td>
+            <img src="REPORT.png">
+        </div>
+
+        <div id="create" class="tabcontent">
+            <h2>Create</h2>
+            <p>This section allows you to create new reports or statistics.</p>
+            <select onchange="DisplayForm()">
+                <option disabled selected>What are you creating today?</option>
+                <option>Report</option>
+                <option>Survey</option>
+                <option>Stat update</option>
+            </select>
+            <form id="displayform" style="display: none;">
+                <h4>Create report</h4>
+                <input type="text" placeholder="Report ID" value="ID: 23254">
+                <input type="text" placeholder="Report name">
+                <input type="file" placeholder="Report name">
+                <button>Submit</button>
+            </form>
+        </div>
+
+        <button class="scroll-to-top" onclick="scrollToTop()">⬆️</button>
+    </div>
+
+    <script>
+        function printDocument(){
+            alert("Printing in progress...");
+        }
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function DisplayForm(){
+            document.getElementById("displayform").style.display = "block";
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+</html>

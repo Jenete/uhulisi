@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uhalisi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ccc1c1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-repeat: no-repeat;
+        }
+
+        .form-container {
+            background-color: transparent;
+            
+            
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-container, .login-container  {
+            display: none;
+        }
+        .buttons{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 80px;
+        }
+        .buttons button{
+            margin: 5px;
+            background-color: #007bff;
+            border: none;
+            box-shadow: 2px -2px 2px gray;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        
+        <div class="buttons">
+            <button id="loginBtn">Sign in</button><button id="signupBtn">Register</button>
+        </div>
+        <div class="login-container">
+            <input type="email" placeholder="Username" required>
+            <input type="password" placeholder="Password">
+            <button onclick="navigate()">Log in</button>
+            <div class="forgot-password">
+                <a href="#">Forgot username or password? Click here</a>
+            </div>
+        </div>
+        <div class="signup-container">
+            <input type="text" placeholder="Full name">
+            <input type="text" placeholder="Company name (optional)">
+            <input type="email" placeholder="Username">
+            <input type="password" placeholder="Create password">
+            <input type="password" placeholder="Confirm password">
+            <button onclick="navigate()">Signup</button>
+        </div>
+        <div class="signup-container">
+            <input type="email" placeholder="Username">
+            <button>Send code</button>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between login and signup forms
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.querySelector('#loginBtn');
+            const signupBtn = document.querySelector('#signupBtn');
+            const loginContainer = document.querySelector('.login-container');
+            const signupContainer = document.querySelector('.signup-container');
+
+            loginBtn.addEventListener('click', function() {
+                loginContainer.style.display = 'block';
+                signupContainer.style.display = 'none';
+            });
+
+            signupBtn.addEventListener('click', function() {
+                loginContainer.style.display = 'none';
+                signupContainer.style.display = 'block';
+            });
+        });
+        function navigate(){
+            window.location.href = "mockview.html";
+        }
+    </script>
+</body>
+</html>
